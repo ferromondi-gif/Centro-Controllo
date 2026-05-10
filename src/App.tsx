@@ -16,7 +16,7 @@ const questionnaires = [
     id: "training",
     title: "Allenamento",
     description: "Monitora i tuoi progressi fisici e tecnici. Registra ogni sessione per superare i tuoi limiti.",
-    url: "https://allenamento-kbc535qdg-ferruccio-mondinelli-s-projects.vercel.app/",
+    url: "https://allenamento-teal.vercel.app?_vercel_share=zU1U3ClSAQGDrGrCjer7qdhDZsmwFRW9",
     icon: <Dumbbell className="w-6 h-6 text-blue-400" />,
     border: "border-blue-900/50",
     bg: "bg-blue-950/20",
