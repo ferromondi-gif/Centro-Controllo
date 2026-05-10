@@ -1,109 +1,85 @@
-import { motion } from "motion/react";
 import { ClipboardCheck, Dumbbell, ArrowRight, Sparkles } from "lucide-react";
 
 const questionnaires = [
   {
     id: "ready",
     title: "Buongiorno",
-    description: "Inizia la tua giornata con il piede giusto. Un breve check-in per monitorare il tuo stato di prontezza e motivazione.",
+    description: "Inizia la tua giornata con il piede giusto. Un breve check-in per monitorare il tuo stato di prontezza.",
     url: "https://questionario1buongiornosonopronto.vercel.app/",
-    icon: <ClipboardCheck className="w-8 h-8 text-emerald-400" />,
-    color: "from-emerald-500/20 to-emerald-900/20",
-    border: "border-emerald-500/30",
-    hover: "hover:border-emerald-500/60",
-    button: "bg-emerald-500 hover:bg-emerald-400"
+    icon: <ClipboardCheck className="w-6 h-6 text-emerald-400" />,
+    border: "border-emerald-900/50",
+    bg: "bg-emerald-950/20",
+    hoverBg: "hover:bg-emerald-900/30",
+    btnColor: "bg-emerald-500"
   },
   {
     id: "training",
     title: "Allenamento",
-    description: "Monitora i tuoi progressi fisici e tecnici. Registra ogni sessione per superare i tuoi limiti giorno dopo giorno.",
+    description: "Monitora i tuoi progressi fisici e tecnici. Registra ogni sessione per superare i tuoi limiti.",
     url: "https://allenamento-kbc535qdg-ferruccio-mondinelli-s-projects.vercel.app/",
-    icon: <Dumbbell className="w-8 h-8 text-blue-400" />,
-    color: "from-blue-500/20 to-blue-900/20",
-    border: "border-blue-500/30",
-    hover: "hover:border-blue-500/60",
-    button: "bg-blue-500 hover:bg-blue-400"
+    icon: <Dumbbell className="w-6 h-6 text-blue-400" />,
+    border: "border-blue-900/50",
+    bg: "bg-blue-950/20",
+    hoverBg: "hover:bg-blue-900/30",
+    btnColor: "bg-blue-500"
   }
 ];
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#050505] text-white selection:bg-white/20 selection:text-white">
-      {/* Background Decor */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-500/10 blur-[120px] rounded-full" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-emerald-500/10 blur-[120px] rounded-full" />
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150" />
-      </div>
-
-      <main className="relative z-10 max-w-5xl mx-auto px-6 py-20 lg:py-32">
-        <header className="mb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="flex items-center gap-2 mb-4">
-              <Sparkles className="w-5 h-5 text-yellow-400" />
-              <span className="text-xs font-semibold tracking-[0.3em] uppercase text-white/50">
-                Hub Personale
-              </span>
-            </div>
-            <h1 className="text-6xl md:text-8xl font-display font-bold tracking-tighter mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60">
-              I miei questionari
-            </h1>
-            <p className="text-lg md:text-xl text-white/40 max-w-2xl leading-relaxed">
-              Bentornato. Seleziona uno dei tuoi percorsi qui sotto per continuare a monitorare la tua evoluzione quotidiana.
-            </p>
-          </motion.div>
+    <div className="min-h-screen bg-black text-slate-200 font-sans selection:bg-white/10">
+      <main className="max-w-4xl mx-auto px-6 py-16 lg:py-24">
+        <header className="mb-16">
+          <div className="flex items-center gap-2 mb-3">
+            <Sparkles className="w-4 h-4 text-yellow-500" />
+            <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-slate-500">
+              Personal Hub
+            </span>
+          </div>
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white mb-4">
+            I miei questionari
+          </h1>
+          <p className="text-base md:text-lg text-slate-400 max-w-xl">
+            Seleziona un percorso per continuare. Interfaccia ottimizzata per la velocità.
+          </p>
         </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {questionnaires.map((q, index) => (
-            <motion.a
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {questionnaires.map((q) => (
+            <a
               key={q.id}
               href={q.url}
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
-              className={`group relative p-8 rounded-3xl border ${q.border} ${q.hover} bg-gradient-to-br ${q.color} transition-all duration-500 hover:scale-[1.02] active:scale-[0.98] cursor-pointer`}
+              className={`group flex flex-col p-6 rounded-2xl border ${q.border} ${q.bg} ${q.hoverBg} transition-all duration-200 active:scale-[0.98]`}
+              id={`link-${q.id}`}
             >
-              <div className="flex flex-col h-full h-min-[300px]">
-                <div className="mb-8 p-4 w-fit rounded-2xl bg-black/40 backdrop-blur-md border border-white/5 ring-1 ring-white/10 group-hover:scale-110 transition-transform duration-500">
+              <div className="mb-4 flex items-center justify-between">
+                <div className="p-2.5 rounded-xl bg-black/50 border border-white/5">
                   {q.icon}
                 </div>
-                
-                <h2 className="text-3xl font-bold mb-4 tracking-tight group-hover:text-white transition-colors">
-                  {q.title}
-                </h2>
-                
-                <p className="text-white/50 leading-relaxed mb-10 flex-grow">
-                  {q.description}
-                </p>
-
-                <div className={`mt-auto w-fit flex items-center gap-3 py-3 px-6 rounded-2xl text-sm font-semibold transition-all duration-300 ${q.button} text-black ring-1 ring-white/20 shadow-xl shadow-black/20`}>
-                  Vedi Questionario
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </div>
+                <ArrowRight className="w-4 h-4 text-slate-600 group-hover:text-white group-hover:translate-x-1 transition-all" />
               </div>
+              
+              <h2 className="text-xl font-semibold text-white mb-2">
+                {q.title}
+              </h2>
+              
+              <p className="text-sm text-slate-500 leading-relaxed mb-6 flex-grow">
+                {q.description}
+              </p>
 
-              {/* Decorative Glow */}
-              <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
-            </motion.a>
+              <div className={`mt-auto w-full py-2.5 px-4 rounded-xl text-center text-xs font-bold ${q.btnColor} text-black uppercase tracking-wider`}>
+                Apri
+              </div>
+            </a>
           ))}
         </div>
 
-        <motion.footer
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8 }}
-          className="mt-32 pt-8 border-t border-white/5 flex justify-between items-center text-xs text-white/30 uppercase tracking-widest font-medium"
-        >
-          <div>© 2026 Ferruccio Mondinelli</div>
-          <div className="hidden md:block">Costruito per l'eccellenza</div>
-        </motion.footer>
+        <footer className="mt-20 pt-8 border-t border-white/5 text-[10px] text-slate-600 uppercase tracking-widest flex justify-between">
+          <span>© 2026 F. Mondinelli</span>
+          <span>Fast Mode Enabled</span>
+        </footer>
       </main>
     </div>
   );
