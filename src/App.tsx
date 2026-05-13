@@ -1,4 +1,4 @@
-import { ClipboardCheck, Dumbbell, ArrowRight, Sparkles } from "lucide-react";
+import { ClipboardCheck, Dumbbell, Moon, ArrowRight, Sparkles } from "lucide-react";
 
 const questionnaires = [
   {
@@ -22,13 +22,24 @@ const questionnaires = [
     bg: "bg-blue-950/20",
     hoverBg: "hover:bg-blue-900/30",
     btnColor: "bg-blue-500"
+  },
+  {
+    id: "night",
+    title: "Buonanotte",
+    description: "Rifletti sulla tua giornata e prepara la mente per un riposo rigenerante.",
+    url: "https://buona-notte-phi.vercel.app?_vercel_share=gpVrX5tALmb59CWKKJV5rpf4E2tDGJZ9",
+    icon: <Moon className="w-6 h-6 text-indigo-400" />,
+    border: "border-indigo-900/50",
+    bg: "bg-indigo-950/20",
+    hoverBg: "hover:bg-indigo-900/30",
+    btnColor: "bg-indigo-500"
   }
 ];
 
 export default function App() {
   return (
     <div className="min-h-screen bg-black text-slate-200 font-sans selection:bg-white/10">
-      <main className="max-w-4xl mx-auto px-6 py-16 lg:py-24">
+      <main className="max-w-6xl mx-auto px-6 py-16 lg:py-24">
         <header className="mb-16">
           <div className="flex items-center gap-2 mb-3">
             <Sparkles className="w-4 h-4 text-yellow-500" />
@@ -39,12 +50,12 @@ export default function App() {
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white mb-4">
             I miei questionari
           </h1>
-          <p className="text-base md:text-lg text-slate-400 max-w-xl">
-            Seleziona un percorso per continuare. Interfaccia ottimizzata per la velocità.
+          <p className="text-base md:text-lg text-slate-400 max-w-xl italic">
+            Ci vediamo al mattino, post-allenamento e prima di andare a dormire... ti voglio tanto bene ❤️
           </p>
         </header>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {questionnaires.map((q) => (
             <a
               key={q.id}
